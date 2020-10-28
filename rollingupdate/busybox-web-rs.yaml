@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-web
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: busybox-web
+  template:
+    metadata:
+      labels:
+        app: busybox-web
+        version: v2
+    spec:
+      containers:
+      - name: busybox-web
+        image: sxlsteven/busybox-web:1.0.1
+        resources:
+          requests:
+            cpu: 200m
+        ports:
+        - containerPort: 80

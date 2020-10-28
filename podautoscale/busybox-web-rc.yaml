@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: busybox-web
+spec:
+  replicas: 1
+  selector:
+    app: busybox-web
+  template:
+    metadata:
+      labels:
+        app: busybox-web
+    spec:
+      containers:
+      - name: busybox-web
+        image: sxlsteven/busybox-web:1.0.0
+        resources:
+          requests:
+            cpu: 200m
+        ports:
+        - containerPort: 80

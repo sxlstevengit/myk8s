@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: pod-healthy-check
+  labels:
+    app: pod-healthy-check
+spec:
+  containers:
+  - name: pod-healthy-check
+    image: busybox:latest
+    args: ["/bin/sh","-c","echo ok>/tmp/1.txt;sleep 10;rm -rf /tmp/1.txt;sleep 600 "]
+    livenessProbe:
+      exec:
+        command: ["cat","/tmp/1.txt"]
+      initialDelaySeconds: 15
+      timeoutSeconds: 1

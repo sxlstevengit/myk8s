@@ -1,0 +1,16 @@
+注意：
+
+POD
+hostPort相当于docker run -p 8081:8080,不用创建svc,因此端口只在容器运行的vm上监听
+
+hostNetwork相当于 docker run --net=host ,不用创建svc,因此端口只在容器运行的vm上监听
+缺点: 没法多pod负载
+
+
+Service
+
+NodePort-svc级别,由kube-proxy操控,所有节点规则统一,逻辑上市全局的
+因此,svc上的nodeport会监听在所有的节点上(如果不指定,即是随机端口,由apiserver指定--service-node-port-range '30000-32767'),即使有1个pod,任意访问某台的nodeport都可以访问到这个服务
+
+
+externalIPs 通过svc创建,在指定的node上监听端口

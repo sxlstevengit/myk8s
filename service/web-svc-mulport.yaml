@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-web
+  labels:
+    app: tomcat-web
+spec:
+  selector:
+    app: tomcat-web
+  ports:
+  - name: web
+    port: 80
+    targetPort: 8080
+  - name: management 
+    port: 8005
+    targetPort: 8005
