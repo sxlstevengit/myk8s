@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv001
+  labels:
+    name: pv001
+spec:
+  nfs:
+    path: /home/data/k8s/v1
+    server: 192.168.10.74
+  accessModes: ["ReadWriteMany","ReadWriteOnce"]   #访问模式
+  capacity:                                        #设置pv的大小
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv002
+  labels:
+    name: pv002
+spec:
+  nfs:
+    path: /home/data/k8s/v2
+    server: 192.168.10.74
+  accessModes: ["ReadWriteMany","ReadWriteOnce"]   #访问模式
+  capacity:                                        #设置pv的大小
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv003
+  labels:
+    name: pv003
+spec:
+  nfs:
+    path: /home/data/k8s/v3
+    server: 192.168.10.74
+  accessModes: ["ReadWriteMany","ReadWriteOnce"]   #访问模式
+  capacity:                                        #设置pv的大小
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv004
+  labels:
+    name: pv004
+spec:
+  nfs:
+    path: /home/data/k8s/v4
+    server: 192.168.10.74
+  accessModes: ["ReadWriteMany","ReadWriteOnce"]   #访问模式
+  capacity:                                        #设置pv的大小
+    storage: 1Gi
